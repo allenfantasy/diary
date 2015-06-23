@@ -1,0 +1,103 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 23, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 23, 2015</h1></header><div class="content"><div class="diary"><h2 id="latex">LaTeX</h2>
+<p>From <a href="https://en.wikipedia.org/wiki/LaTeX">Wikipedia</a></p>
+<blockquote>
+<p>LaTeX ... is a word processor and document markup language. It is distinguished from typical word processors such as Microsoft Office and OpenOffice in that the writer uses plain text as opposed to formatted text, relying on markup tagging conventions to define the general structure of a document.</p>
+</blockquote>
+<p>Since Microsoft Word sucks, I would suggest using LaTeX.</p>
+<h3 id="preparation">Preparation</h3>
+<p>As a Mac user, I downloaded &amp; installed <a href="https://tug.org/mactex/">MacTex</a>, and use TexShop, which is installed along with MacTex.</p>
+<p>You may use other tools like <a href="http://www.xm1math.net/texmaker/">TexMaker</a>, or choose your favorite editor/IDE from reference below.</p>
+<h3 id="tl-dr">tl;dr</h3>
+<p>Read <a href="http://math.bu.edu/people/shane/latex.html">this tutorial</a> and get it all.</p>
+<p>The following are just random notes.</p>
+<h3 id="basic">Basic</h3>
+<ul>
+<li>Every LaTeX document has two parts: <code>preamable</code> and <code>body</code>.</li>
+<li>Preamable declared document&#39;s type, specific features and custom commands</li>
+<li>Body is the main content of document.</li>
+<li><code>\</code> tells LaTeX to follow a specific command.</li>
+<li><code>%</code> comments a line</li>
+</ul>
+<p>Here we have a simple example:</p>
+<pre><code class="lang-tex"><span class="hljs-command">\documentclass</span><span class="hljs-special">[</span>UTF8<span class="hljs-special">]</span><span class="hljs-special">{</span>ctexart<span class="hljs-special">}</span>
+<span class="hljs-command">\usepackage</span><span class="hljs-special">{</span>fullpage,setspace<span class="hljs-special">}</span>
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>document<span class="hljs-special">}</span>
+
+<span class="hljs-command">\doublespacing</span>
+
+<span class="hljs-comment">% 中文测试</span>
+基于<span class="hljs-command">\textbf</span><span class="hljs-special">{</span>Javascript<span class="hljs-special">}</span>和<span class="hljs-command">\textbf</span><span class="hljs-special">{</span>CSS3<span class="hljs-special">}</span>的<span class="hljs-command">\emph</span><span class="hljs-special">{</span>网页动画<span class="hljs-special">}</span>实现比较和优化
+
+<span class="hljs-command">\singlespacing</span>
+
+<span class="hljs-comment">% New paragraph</span>
+So one comment about these wonderful paragraphs. In order to take advantage of them, I have to skip an entire line, as I'm sure you've noticed. So just going to the next line will NOT make a new paragraph in LaTex. I'll teach you how to take advantage of this in one of the future lessons.
+
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>document<span class="hljs-special">}</span>
+</code></pre>
+<h3 id="packages">Packages</h3>
+<ul>
+<li>specific ways of adding features to a document</li>
+<li>called in preamable</li>
+<li><code>\usepackage{packagename}</code></li>
+<li>use 3rd party package in a relative path</li>
+<li>( when needed ) use commands specialized for package</li>
+</ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="http://tex.stackexchange.com/questions/220/i-want-to-start-using-latex-on-mac-os-x-where-do-i-start">How to use LaTeX in Mac</a></li>
+<li><a href="http://tex.stackexchange.com/questions/339/latex-editors-ides">LaTeX Editor / IDE comparison</a></li>
+<li><a href="https://en.wikipedia.org/wiki/Comparison_of_TeX_editors">Another Comparison</a></li>
+<li><a href="http://www.howtotex.com/">HowToTeX.com</a></li>
+<li><a href="http://liam0205.me/2014/11/02/latex-mactex-chinese-support/">MacTex 中文支持</a></li>
+</ul>
+<h2 id="0-to-1">0 TO 1</h2>
+<p>by Peter Thiel</p>
+<h3 id="chapter-6-you-are-not-a-lottery-ticket">Chapter 6: You Are Not a Lottery Ticket</h3>
+<p>Explained the reason, background &amp; impact of 4 different attitudes <strong>towards future:</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>definite</th>
+<th>indefinite</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>optimistic</strong></td>
+<td>US., 1950-60</td>
+<td>US, 1982 - present</td>
+</tr>
+<tr>
+<td><strong>pessimistic</strong></td>
+<td>China, present</td>
+<td>Europe, present</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li><p>John Rawls: American moral &amp; political philosopher, Professor at Harvard U, the author of <strong>A Theory of Justice</strong></p>
+</li>
+<li><p>Robert Nozick: American philosopher, Professor at Harvard U, best known for his book <strong>Anarchy, State and Utopia</strong>, a libertarian answer to J. Rowls’ <strong>A Theory of Justice</strong></p>
+</li>
+<li><blockquote>
+<p>… arguing over process has become a way to endlessly defer making concrete plans for a better future.</p>
+</blockquote>
+</li>
+<li><blockquote>
+<p>Be definite master of your startup, and reject the unjust tyranny of Chance, you are not a lottery ticket, don’t make tiny small changes following others’ opinion or “evolution”.</p>
+</blockquote>
+</li>
+</ul>
+<h2 id="git-submodule">Git Submodule</h2>
+<p>Submodule is a pain in the ass.</p>
+<h2 id="misc">Misc</h2>
+<p><code>pdf == Portable Document Format</code></p>
+</div></div><footer class="footer"><address class="author">Copyright &copy; <a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by <a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
