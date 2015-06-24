@@ -9,14 +9,15 @@ The markdown files for the diaries can be kept under another repo named `YYYY/MM
 ## Build
 
 1. Run `npm install` to install the dependencies
-2. Configure `config.js` and `.gitsubmodules`
-3. Run
-  1. `git submodule sync` to update the remote url
-  2. `git submodule init` to setup your submodule
-  2. `git submodule update` to update your submodule
-  3. `git submodule -q foreach git pull` to pull the markdown files
-4. Run `gulp build` to generate the static site (placed under `dist`).
-5. Run `gulp server` and visit `http://localhost:8000/diary` if you want to see it hosted locally(make sure the port 8000 is not taken).
+2. Configure `config.js`
+3. `git checkout -b yourname` for your own branch(so you can keep the master branch intact in case you want to receive updates)
+4. `git rm diary` to remove the old submodule for diaries
+5. `git submodule add git://new/submodule.git diary` to add your own submodule
+6. Commit the changes (to your own branch) if you want.
+7. Run `gulp build` to generate the static site (placed under `dist`).
+8. Run `gulp server` and visit `http://localhost:8000/diary` if you want to see it hosted locally(make sure the port 8000 is not taken).
+
+You can receive updates by pulling updates into your master branch, and check them out to your own branch.
 
 ## Deploy to GitHub Pages
 
@@ -27,8 +28,9 @@ The markdown files for the diaries can be kept under another repo named `YYYY/MM
 ## Develop
 
 1. Make sure port 35729(for livereload) and 8000(for the local server) are available.
-2. Run gulp, then visit http://localhost:8000/diary`.
+2. Run `gulp`, then visit `http://localhost:8000/diary`.
 3. Start development!
+4. When you are done, you can checkout the changes from your branch to the master branch, and send in a pull request if you want.
 
 ## TODO
 
