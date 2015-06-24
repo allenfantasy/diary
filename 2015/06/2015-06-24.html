@@ -1,0 +1,106 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 24, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 24, 2015</h1></header><div class="content"><div class="diary"><h2 id="latex-ii">LaTeX II</h2>
+<p>Learn the basic syntax/grammer of LaTeX today.</p>
+<ul>
+<li>Typesetting</li>
+<li>Mathematical Typesetting</li>
+<li>Graphics</li>
+<li>Tables</li>
+<li>Bibliographies &amp; Citations</li>
+</ul>
+<h3 id="example-tex-file">Example Tex File</h3>
+<pre><code class="lang-tex"><span class="hljs-comment">%\documentclass[UTF8]{ctexart} % using new ctex macro package</span>
+<span class="hljs-comment">%\documentclass[10pt, a4paper]{article}</span>
+
+<span class="hljs-comment">% 直接使用xeCJK的做法</span>
+
+<span class="hljs-command">\documentclass</span><span class="hljs-special">[</span>11pt,a4paper<span class="hljs-special">]</span><span class="hljs-special">{</span>article<span class="hljs-special">}</span>
+<span class="hljs-command">\usepackage</span><span class="hljs-special">{</span>xeCJK<span class="hljs-special">}</span>
+<span class="hljs-command">\usepackage</span><span class="hljs-special">{</span>amsmath,amsthm,amssymb<span class="hljs-special">}</span>
+<span class="hljs-command">\setCJKmainfont</span><span class="hljs-special">[</span>BoldFont=STZhongsong, ItalicFont=STKaiti<span class="hljs-special">]</span><span class="hljs-special">{</span>STSong<span class="hljs-special">}</span>
+<span class="hljs-command">\setCJKsansfont</span><span class="hljs-special">[</span>BoldFont=STHeiti<span class="hljs-special">]</span><span class="hljs-special">{</span>STXihei<span class="hljs-special">}</span>
+<span class="hljs-command">\setCJKmonofont</span><span class="hljs-special">{</span>STFangsong<span class="hljs-special">}</span>
+
+<span class="hljs-command">\title</span><span class="hljs-special">{</span>Testing Article<span class="hljs-special">}</span>
+<span class="hljs-command">\author</span><span class="hljs-special">{</span>Allen Wu<span class="hljs-special">}</span>
+<span class="hljs-command">\date</span><span class="hljs-special">{</span>Before time began<span class="hljs-command">\ldots</span><span class="hljs-special">}</span>
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>document<span class="hljs-special">}</span>
+<span class="hljs-command">\maketitle</span>
+<span class="hljs-command">\newpage</span>
+<span class="hljs-command">\tableofcontents</span>
+<span class="hljs-command">\newpage</span>
+
+<span class="hljs-command">\section</span><span class="hljs-special">{</span>Life at Sacred Heart<span class="hljs-special">}</span>
+<span class="hljs-command">\subsection</span><span class="hljs-special">{</span>Subsection 1<span class="hljs-special">}</span>
+<span class="hljs-command">\subsubsection</span><span class="hljs-special">{</span>Sub-sub section 1<span class="hljs-special">}</span>
+
+The greek letter <span class="hljs-formula">$<span class="hljs-command">\zeta</span>$</span> is a big pain to write by hand, but it's easy (and prettier) in LaTeX!
+
+Here is Euler's beautiful and elegant and wonderful equation:
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>equation<span class="hljs-special">}</span>
+e^<span class="hljs-special">{</span>i<span class="hljs-command">\pi</span><span class="hljs-special">}</span> + 1 = 0
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>equation<span class="hljs-special">}</span>
+
+And Schrodinger equation:
+
+<span class="hljs-comment">%\begin{equation}</span>
+<span class="hljs-command">\[</span> <span class="hljs-command">\frac</span><span class="hljs-special">{</span><span class="hljs-command">\hbar</span>^2<span class="hljs-special">}</span><span class="hljs-special">{</span>2m<span class="hljs-special">}</span><span class="hljs-command">\nabla</span>^2<span class="hljs-command">\Psi</span> + V(<span class="hljs-command">\mathbf</span><span class="hljs-special">{</span>r<span class="hljs-special">}</span>)<span class="hljs-command">\Psi</span>
+= -i<span class="hljs-command">\hbar</span> <span class="hljs-command">\frac</span><span class="hljs-special">{</span><span class="hljs-command">\partial</span><span class="hljs-command">\Psi</span><span class="hljs-special">}</span><span class="hljs-special">{</span><span class="hljs-command">\partial</span> t<span class="hljs-special">}</span> <span class="hljs-command">\]</span>
+<span class="hljs-comment">%\end{equation}</span>
+
+Another equation:
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>equation<span class="hljs-special">}</span><span class="hljs-command">\label</span><span class="hljs-special">{</span>rw-metric<span class="hljs-special">}</span>
+ds^2 = c^2 dt^2 <span class="hljs-command">\left</span>( <span class="hljs-command">\frac</span><span class="hljs-special">{</span>d<span class="hljs-command">\sigma</span>^2<span class="hljs-special">}</span><span class="hljs-special">{</span>1-k<span class="hljs-command">\sigma</span>^2<span class="hljs-special">}</span>
++ <span class="hljs-command">\sigma</span>^2<span class="hljs-command">\left</span><span class="hljs-special">[</span> d<span class="hljs-command">\theta</span>^2 + <span class="hljs-command">\sin</span>^2<span class="hljs-command">\theta</span> d<span class="hljs-command">\phi</span>^2 <span class="hljs-command">\right</span><span class="hljs-special">]</span> <span class="hljs-command">\right</span>)
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>equation<span class="hljs-special">}</span>
+
+And <span class="hljs-command">\ldots</span> here comes an aligned version:
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>align<span class="hljs-special">}</span>
+X(t) = 1 + <span class="hljs-command">\frac</span><span class="hljs-special">{</span>t^3<span class="hljs-special">}</span><span class="hljs-special">{</span>2t<span class="hljs-special">}</span> <span class="hljs-command">\\</span>
+= 1 + <span class="hljs-command">\frac</span><span class="hljs-special">{</span>t^2<span class="hljs-special">}</span><span class="hljs-special">{</span>2<span class="hljs-special">}</span>
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>align<span class="hljs-special">}</span>
+
+3--5
+
+For example --- this is an em-rule (or em-dash).
+
+<span class="hljs-command">\_</span> <span class="hljs-command">\&amp;</span> <span class="hljs-command">\%</span> <span class="hljs-command">\{</span> <span class="hljs-command">\}</span> <span class="hljs-command">\#</span> <span class="hljs-command">\textbackslash</span>
+
+<span class="hljs-command">\emph</span><span class="hljs-special">{</span>emphasized text<span class="hljs-special">}</span>
+
+<span class="hljs-command">\emph</span><span class="hljs-special">{</span>You can embed <span class="hljs-command">\emph</span><span class="hljs-special">{</span>some text<span class="hljs-special">}</span> which is not emphasized<span class="hljs-special">}</span>
+
+<span class="hljs-command">\textit</span><span class="hljs-special">{</span>italic text<span class="hljs-special">}</span>
+
+<span class="hljs-command">\textbf</span><span class="hljs-special">{</span>bold text<span class="hljs-special">}</span>
+
+<span class="hljs-command">\texttt</span><span class="hljs-special">{</span>monospaced text<span class="hljs-special">}</span>
+
+
+<span class="hljs-command">\begin</span><span class="hljs-special">{</span>thebibliography<span class="hljs-special">}</span><span class="hljs-special">{</span>99<span class="hljs-special">}</span>
+<span class="hljs-command">\bibitem</span><span class="hljs-special">{</span>Fey49<span class="hljs-special">}</span> R. P. Feynman,
+Space-Time Approach to Quantum Electrodynamics,
+Phys. Rev. <span class="hljs-command">\textbf</span><span class="hljs-special">{</span>76<span class="hljs-special">}</span> 6 (1949)
+<span class="hljs-command">\bibitem</span><span class="hljs-special">{</span>Cas48<span class="hljs-special">}</span> H. B. Casimir, On the attraction
+between two perfectly conducting plates,
+Proc. K. Ned. Akad. Wetensch. <span class="hljs-command">\textbf</span><span class="hljs-special">{</span>51<span class="hljs-special">}</span> (1948)
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>thebibliography<span class="hljs-special">}</span>
+
+<span class="hljs-command">\end</span><span class="hljs-special">{</span>document<span class="hljs-special">}</span>
+</code></pre>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="http://math.bu.edu/people/shane/static/latex/resources.html">LaTeX Resources on the Web</a></li>
+<li><a href="http://ftp.snt.utwente.nl/pub/software/tex/info/intro-scientific/scidoc.pdf">Writing Scientific Documents Using LATEX</a></li>
+<li><a href="http://www.bibtex.org/">BiBTeX</a></li>
+<li><a href="http://www.ctan.org/">CTAN: Comprehensive TeX Archive Network</a></li>
+</ul>
+</div></div><footer class="footer"><address class="author">Copyright &copy; <a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by <a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
