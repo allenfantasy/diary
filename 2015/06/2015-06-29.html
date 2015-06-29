@@ -1,0 +1,115 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 29, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 29, 2015</h1></header><div class="content"><div class="diary"><h2 id="interview">Interview</h2>
+<p>Just being struck by interviewer. @YY</p>
+<h3 id="content">Content</h3>
+<p>Basically about frontend development. Here&#39;s the result.</p>
+<ul>
+<li>[ ] HTML vs. XHTML ( partially explained )</li>
+<li>[ ] DOM 2 vs. DOM 3</li>
+<li>[ ] FontSize Unit ( only mention 3/9, lol )</li>
+<li>[ ] Flex</li>
+<li>[x] Vertical Alignment</li>
+<li>[ ] <code>text-transform</code></li>
+<li>[x] RequireJS vs. Browserify</li>
+<li>[x] About Gulp</li>
+<li>[x] <code>apply</code>, <code>call</code></li>
+<li>[ ] <code>callee</code></li>
+<li>[x] Implement shallow/deep copy in Vanilla Javascript</li>
+</ul>
+<h2 id="webfont">WebFont</h2>
+<h3 id="-http-justineo-github-io-slideshows-font-"><a href="http://justineo.github.io/slideshows/font/#/">字体漫谈</a></h3>
+<p>by GU Yiling ( Baidu EFE )</p>
+<p>Consider 4 aspects of font:</p>
+<ul>
+<li>Character</li>
+<li>Glyph</li>
+<li>Font</li>
+<li>Typeface</li>
+</ul>
+<p>Category:</p>
+<ul>
+<li>Whether serif<ul>
+<li><code>serif</code></li>
+<li><code>sans serif</code></li>
+</ul>
+</li>
+<li>Display type</li>
+<li>Data format ( computer font )</li>
+</ul>
+<h3 id="css-3-fonts">CSS 3 Fonts</h3>
+<p>CSS 2.1 font attributes</p>
+<p><img src="http://7xjvtw.com1.z0.glb.clouddn.com/20150629-css-font-ii.png" alt=""></p>
+<p>CSS 3 font attributes</p>
+<p><img src="http://7xjvtw.com1.z0.glb.clouddn.com/20150629-css-font-i.png" alt=""></p>
+<h4 id="font-stretch">font-stretch</h4>
+<p>select the most accurate face of the font. NOT supported for current browsers.</p>
+<ul>
+<li><code>(ultra- / extra- / semi- ) condensed</code></li>
+<li><code>(ultra- / extra- / semi- ) expanded</code></li>
+<li><code>inherit</code></li>
+</ul>
+<h4 id="font-variant">font-variant</h4>
+<p>Acts as a shorthand for the longhand properties.</p>
+<ul>
+<li>*-caps</li>
+<li>*-numeric</li>
+<li>*-alternates</li>
+<li>*-ligatures</li>
+<li>*-east-asian</li>
+</ul>
+<h4 id="-font-face">@font-face</h4>
+<ul>
+<li>allows authors to specify online fonts to display text on their web pages</li>
+<li>Gecko strategy: <code>best CSS fallback font available on the user’s computer</code></li>
+<li><code>.ttf</code>, <code>.otf</code>, <code>.woff</code></li>
+</ul>
+<h4 id="woff">WOFF</h4>
+<ul>
+<li>a web font format developed by Mozilla and other orgs</li>
+<li>the font data is compressed</li>
+<li>private-use data structures &amp; meta-data are added</li>
+<li>Font vendors will license WOFF format fonts ( instead of TrueType / OpenType )</li>
+<li>Browser vendors like WOFF, so it has the potential of becoming a truly universal, interoperable font format for the web</li>
+<li>WOFF &amp; WOFF2 mostly differ in regard to the compression algorithm used.</li>
+<li>WOFF2 is not supported in IE, Safari &amp; Android</li>
+</ul>
+<p><img src="http://7xjvtw.com1.z0.glb.clouddn.com/20150629-font-face.png" alt=""></p>
+<h4 id="font-style">font-style</h4>
+<ul>
+<li><code>normal / italic / oblique</code></li>
+<li><code>italic</code> forms are generally cursive in nature [ created with specific characters ]</li>
+<li><code>oblique</code> faces are typically sloped versions of the regular face [ is a roman font that has been skewed a certain degrees ]</li>
+<li>It’s best to specify an italic <strong>only when you’re sure that font has been designed with one</strong></li>
+<li><a href="http://stackoverflow.com/a/1680673">font-style: italic vs oblique in CSS | Stackoverflow</a></li>
+</ul>
+<h3 id="-text-transform-"><code>text-transform</code></h3>
+<p><code>text-transform: none | capitalize | uppercase | lowercase</code></p>
+<h3 id="resources">Resources</h3>
+<ul>
+<li><a href="https://everythingfonts.com/font-face">EverythingFonts Generator</a></li>
+<li><a href="http://www.fontsquirrel.com/tools/webfont-generator">FontSquirrel WebFont Generator</a></li>
+<li><a href="http://openfontlibrary.org/">Open Font Library</a></li>
+<li><a href="https://www.google.com/fonts/">Google Web Fonts</a></li>
+<li><a href="http://www.dafont.com/">dafont</a></li>
+</ul>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/WOFF">WOFF - Web Developer Guide | MDN</a></li>
+<li><a href="http://blog.jjgod.org/2011/04/09/how-do-browsers-render-text/">浏览器如何渲染文本</a></li>
+<li><a href="https://lifesinger.wordpress.com/2011/04/06/best-web-default-fonts/">最佳 Web 中文默认字体</a></li>
+<li><a href="https://ruby-china.org/topics/14005">Web 中文字体应用指南 by @nightire</a></li>
+<li><a href="http://lepture.com/zh/2014/chinese-fonts-and-yue-css">适合阅读的中文字体 by @lepture</a></li>
+</ul>
+<h2 id="todo-next">TODO NEXT</h2>
+<ul>
+<li>HTML vs. XHTML ( say, HTML history )</li>
+<li>DOM 2 vs. DOM 3 ( say, DOM spec )</li>
+<li>FontSize Unit</li>
+<li>Flex(box)</li>
+<li><code>callee</code> ( say, sth about js function )</li>
+</ul>
+</div></div><footer class="footer"><address class="author">Copyright &copy; <a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by <a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
