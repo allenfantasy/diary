@@ -1,0 +1,83 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 30, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 30, 2015</h1></header><div class="content"><div class="diary"><h2 id="preface">Preface</h2>
+<p>Summary of <code>I don&#39;t knows</code> in Monday&#39;s interview.</p>
+<h2 id="html">HTML</h2>
+<h3 id="concepts">Concepts</h3>
+<ul>
+<li><a href="https://en.wikipedia.org/wiki/Standard_Generalized_Markup_Language">SGML</a> Defined generalized markup languages for documents, as an ISO standard. HTML (before 5) &amp; XML are subset of SGML.</li>
+<li><a href="https://en.wikipedia.org/wiki/HTML">HTML</a> is the standard markup language used to create web page.<ul>
+<li>Nested, pair-like.</li>
+<li>provide a means to build structured documents.</li>
+<li>refer to CSS to define look &amp; layout</li>
+<li>allow text / image / audio / video</li>
+<li>Run on web browsers</li>
+<li>Tim Berners-Lee =&gt; <a href="https://en.wikipedia.org/wiki/Internet_Engineering_Task_Force">IETF</a>&#39;s &quot;HTML Working Group&quot; =&gt; <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C</a>
+=&gt; WHATWG</li>
+</ul>
+</li>
+<li><a href="https://zh.wikipedia.org/wiki/XHTML#.E5.92.8CHTML_4.E7.9A.84.E5.8C.BA.E5.88.AB">XHTML</a> a family of XML languages that mirror or extend of the widely used HTML<ul>
+<li>by <a href="https://en.wikipedia.org/wiki/World_Wide_Web_Consortium">W3C</a></li>
+<li>a far more strict document standard</li>
+</ul>
+</li>
+<li><a href="https://en.wikipedia.org/wiki/WHATWG">WHATWG</a> is a community of people interested in evolving HTML and related tech:<ul>
+<li>HTML5</li>
+<li>Web Workers</li>
+<li>Microdata</li>
+<li>Web Form</li>
+</ul>
+</li>
+<li><a href="https://zh.wikipedia.org/wiki/%E6%96%87%E4%BB%B6%E7%B1%BB%E5%9E%8B%E6%8F%8F%E8%BF%B0">DTD</a></li>
+</ul>
+<h3 id="html-vs-xhtml">HTML vs. XHTML</h3>
+<p><a href="http://www.diffen.com/difference/HTML_vs_XHTML#Overview_of_HTML_and_XHTML">A fair complete comparison</a></p>
+<h3 id="doctype">DOCTYPE</h3>
+<ul>
+<li><a href="http://diveintohtml5.info/semantics.html#the-doctype">DOCTYPE - Semantics | DiveIntoHTML5</a></li>
+<li><a href="http://witcher42.github.io/2014/05/28/doctype/">A good explanation in Chinese</a></li>
+<li><a href="https://developer.mozilla.org/fr/docs/DOM_Levels#DOM_Level_2">Gecko’s &quot;Almost Standard&quot; Mode</a></li>
+</ul>
+<h2 id="css">CSS</h2>
+<h3 id="flexbox">Flexbox</h3>
+<p>It&#39;s a very complicated topic, and I would write a thorough article for it ( later ).</p>
+<ul>
+<li><a href="http://zh.learnlayout.com/flexbox.html">学习CSS布局 - Flexbox</a></li>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A Complete Guide to Flexbox | CSS-Tricks</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/Guide/CSS/Flexible_boxes">Using CSS Flexible boxes - Web developer guide | MDN</a></li>
+<li>Autoprefixer has a flex <a href="https://www.npmjs.com/package/autoprefixer">example</a></li>
+</ul>
+<h3 id="text-align-justify">text-align justify</h3>
+<p>Barely you should use <code>text-align: justify</code> but things are not that simple.</p>
+<ul>
+<li><a href="http://www.cnblogs.com/rubylouvre/archive/2012/11/28/2792504.html">CSS文本两端对齐 - 司徒正美</a></li>
+<li><a href="http://www.zhihu.com/question/19895400">Discussion in ZhiHu</a> ( Other solutions are recommanded, besides the correct one )</li>
+</ul>
+<h2 id="js">JS</h2>
+<h3 id="arguments-callee">arguments.callee</h3>
+<blockquote>
+<p>Normally we use it in anonymous function to refer the current function.
+But … if possible a better practice is to use named function and call the named function in function’s body  (and the name can be only visible inside function&#39;s body), which can let Javascript Engine to optimize function executions like inlining functions.</p>
+</blockquote>
+<ul>
+<li><a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Functions/arguments/callee">MDN doc</a></li>
+<li><a href="http://stackoverflow.com/questions/7065120/calling-a-javascript-function-recursively">Stackoverflow</a></li>
+</ul>
+<h3 id="dom2-vs-dom3">DOM2 vs. DOM3</h3>
+<blockquote>
+<p>DOM Levels are the versions of the specs for defining how the Document Object Model should work, similarly to how we have HTML4, HTML5, and CSS2.1 specs.</p>
+</blockquote>
+<p><a href="https://developer.mozilla.org/fr/docs/DOM_Levels#DOM_Level_2">DOM Levels | MDN</a></p>
+<h2 id="todo">TODO</h2>
+<ul>
+<li>CSS pseudo class</li>
+<li><a href="https://github.com/substack/stream-handbook">Stream Handbook</a></li>
+<li><a href="https://medium.com/@preslavrachev/gulp-vs-grunt-why-one-why-the-other-f5d3b398edc4">Gulp’s mechanism</a></li>
+<li><a href="http://addyosmani.com/writing-modular-js/">Writing Modular JS</a></li>
+</ul>
+<h2 id="others">OTHERS</h2>
+<p>TuT. So...tired. ( Written in 15.7.2 )</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy; <a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by <a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
