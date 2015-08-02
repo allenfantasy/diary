@@ -1,0 +1,49 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>July 21, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/css/global.css"><link rel="stylesheet" href="/diary/css/tomorrow.css"><link rel="stylesheet" href="/diary/css/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>July 21, 2015</h1></header><div class="content"><div class="diary"><h2 id="css">CSS</h2>
+<p>Read this post since there&#39;s a similar need in work: <a href="http://www.andwecode.com/custom-checkbox-radio-with-icon-fonts/">Custom checkbox and Radio Buttons with icon fonts</a></p>
+<p>And here are some notes.</p>
+<h3 id="mystery-of-box-shadow-">Mystery of <code>box-shadow</code></h3>
+<p>The following CSS just could not work in Chrome - both failed like the coming screenshot:</p>
+<pre><code class="lang-css"><span class="hljs-tag">input</span><span class="hljs-attr_selector">[type=checkbox]</span><span class="hljs-pseudo">:checked</span> + <span class="hljs-rule"><span class="hljs-attribute">.lbl</span>:<span class="hljs-value">:before {
+  box-shadow: <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">2px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>),inset <span class="hljs-number">0px</span> -<span class="hljs-number">15px</span> <span class="hljs-number">10px</span> -<span class="hljs-number">12px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>),<span class="hljs-number">15px</span> <span class="hljs-number">10px</span> -<span class="hljs-number">12px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>)</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">-webkit-shadow</span>:<span class="hljs-value"> <span class="hljs-number">0</span> <span class="hljs-number">1px</span> <span class="hljs-number">2px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>),inset <span class="hljs-number">0px</span> -<span class="hljs-number">15px</span> <span class="hljs-number">10px</span> -<span class="hljs-number">12px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.05</span>),<span class="hljs-number">15px</span> <span class="hljs-number">10px</span> -<span class="hljs-number">12px</span> <span class="hljs-function">rgba</span>(<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0</span>,<span class="hljs-number">0.1</span>)</span></span>;
+}
+</code></pre>
+<p><img src="http://7xjvtw.com1.z0.glb.clouddn.com/20150721-box-shadow.png" alt=""></p>
+<p>DON&#39;T KNOW WHY THE FUCK.</p>
+<h3 id="click-label-input">click: label, input</h3>
+<p>Most of us know (but, neglect) that when you click the label the radio/checkbox <code>&lt;input&gt;</code> would be clicked as well, as long as:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">label</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">“my_input”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-title">!—-</span> <span class="hljs-attribute">Modern</span> <span class="hljs-attribute">browsers</span> <span class="hljs-attribute">-</span>—&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-title">label</span> <span class="hljs-attribute">for</span>=<span class="hljs-value">“my_input”</span>&gt;</span><span class="hljs-tag">&lt;<span class="hljs-title">input</span> <span class="hljs-attribute">id</span>=<span class="hljs-value">“my_input”</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-title">label</span>&gt;</span> <span class="hljs-tag">&lt;<span class="hljs-title">!-—</span> <span class="hljs-attribute">IE</span> <span class="hljs-attribute">-</span>—&gt;</span>
+</code></pre>
+<p>Check <a href="https://css-tricks.com/snippets/jquery/click-input-when-label-clicked/#comment-81235">here</a>. This is one of the main reason for icon-style radio/checkbox.</p>
+<h3 id="pseudo-class">pseudo class</h3>
+<p><em>Pseudo class</em> is a keyword added to selectors that specifies a special state of the element to be selected.</p>
+<p>Check <a href="https://developer.mozilla.org/en-US/docs/Web/CSS/Pseudo-classes">MDN&#39;s document</a> for all pseudo-classes, here I just list some I am interested.</p>
+<ul>
+<li><code>:first-of-type</code>: find the first <code>&lt;span&gt;</code>, first <code>&lt;div&gt;</code>, first <code>&lt;em&gt;</code> in children. (Same for <code>:last-of-type</code>)</li>
+<li><code>:nth-of-type(an+b)</code>: find the <code>(a * n + b)</code> child elements (Same for <code>:nth-last-of-type(an+b)</code>)</li>
+<li><code>:indeterminate</code>: any <code>&lt;input type=&quot;checkbox&quot;&gt;</code> whose <code>indeterminate</code> DOM property is set to <code>true</code> by JS. OR <code>&lt;progress&gt;</code> (in some browsers).</li>
+<li><code>:in-range</code> &amp;&amp; <code>:out-range</code>: matches when an element has its value attribute inside the specified <em>range</em> limitation for this element. (Usually, <code>&lt;input&gt;</code>)</li>
+<li><code>:invalid</code> &amp;&amp; <code>:valid</code>: any <code>&lt;input&gt;</code> or <code>&lt;form&gt;</code> element whose content fails / succeeds to validate according to input&#39;s type settings.</li>
+<li><code>:not(X)</code>: match all elements not represented by selector X.</li>
+</ul>
+<p>And, pay attention to <strong>compatibilities</strong>.</p>
+<h3 id="pseudo-elements-todo-">pseudo elements[TODO]</h3>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/pseudo-elements">All pseudo elements</a>:</p>
+<ul>
+<li><code>::after</code></li>
+<li><code>::before</code></li>
+<li><code>::first-letter</code></li>
+<li><code>::first-line</code></li>
+<li><code>::selection</code></li>
+<li><code>::backdrop</code></li>
+</ul>
+<p>OH, we have CSS2 syntax as well as CSS3 syntax...</p>
+<h2 id="-progress-https-developer-mozilla-org-en-us-docs-web-html-element-progress-"><a href="https://developer.mozilla.org/en-US/docs/Web/HTML/Element/progress"><code>&lt;progress&gt;</code></a></h2>
+<p>Seems really fun.</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy; <a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by <a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
