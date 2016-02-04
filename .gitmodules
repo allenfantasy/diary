@@ -1,0 +1,3 @@
+[submodule "diary"]
+	path = diary
+	url = git://github.com/allenfantasy/my-tech-diary.git
