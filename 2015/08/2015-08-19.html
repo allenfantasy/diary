@@ -1,0 +1,58 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>August 19, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>August 19, 2015</h1></header><div class="content"><div class="diary"><h2 id="sass">Sass</h2>
+<p>Just list some advanced usage of Sass:</p>
+<h3 id="-for">@for</h3>
+<pre><code class="lang-scss"><span class="hljs-at_rule">@<span class="hljs-keyword">for</span> <span class="hljs-variable">$i</span><span class="hljs-preprocessor"> from</span><span class="hljs-preprocessor"> 1</span><span class="hljs-preprocessor"> through</span><span class="hljs-preprocessor"> 3</span> {</span>
+  <span class="hljs-class">.item-</span>#{<span class="hljs-variable">$i</span>} { <span class="hljs-attribute">width</span><span class="hljs-value">: <span class="hljs-number">2em</span> * <span class="hljs-variable">$i</span>;</span> }
+}
+</code></pre>
+<p>would be compiled into:</p>
+<pre><code class="lang-css"><span class="hljs-class">.item-1</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">2em</span></span></span>; }</span>
+<span class="hljs-class">.item-2</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">4em</span></span></span>; }</span>
+<span class="hljs-class">.item-3</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">6em</span></span></span>; }</span>
+</code></pre>
+<h3 id="-each">@each</h3>
+<p>Credit to Ben Frain&#39;s <a href="http://benfrain.com/working-with-lists-and-each-loops-in-sass-with-the-index-and-nth-function/">great introduction</a></p>
+<p>Pay attention to method <code>index</code>.</p>
+<pre><code class="lang-scss"><span class="hljs-variable">$colors-list</span><span class="hljs-value">: <span class="hljs-hexcolor">#111</span> <span class="hljs-hexcolor">#222</span> <span class="hljs-hexcolor">#333</span> <span class="hljs-hexcolor">#444</span> <span class="hljs-hexcolor">#555</span>;</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">each</span> <span class="hljs-variable">$current-color</span><span class="hljs-preprocessor"> in</span> <span class="hljs-variable">$colors-list</span> {</span>
+    <span class="hljs-variable">$i</span><span class="hljs-value">: <span class="hljs-function">index</span>(<span class="hljs-variable">$colors-list</span>, <span class="hljs-variable">$current-color</span>);</span>
+    <span class="hljs-class">.stuff-</span>#{<span class="hljs-variable">$i</span>} {
+        <span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-variable">$current-color</span>;</span>
+    }
+}
+</code></pre>
+<p>would comes to:</p>
+<pre><code class="lang-css"><span class="hljs-class">.stuff-1</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#111111</span></span></span>; }</span>
+<span class="hljs-class">.stuff-2</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#222222</span></span></span>; }</span>
+<span class="hljs-class">.stuff-3</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#333333</span></span></span>; }</span>
+<span class="hljs-class">.stuff-4</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#444444</span></span></span>; }</span>
+<span class="hljs-class">.stuff-5</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">color</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#555555</span></span></span>; }</span>
+</code></pre>
+<p>Some more fun usage, with <code>nth</code></p>
+<pre><code class="lang-scss"><span class="hljs-variable">$background-colors-list</span><span class="hljs-value">: <span class="hljs-hexcolor">#4BC2A5</span> <span class="hljs-hexcolor">#606F40</span> <span class="hljs-hexcolor">#6648CA</span> <span class="hljs-hexcolor">#6B6022</span> <span class="hljs-hexcolor">#2F54E9</span>;</span>
+<span class="hljs-variable">$border-colors-list</span><span class="hljs-value">: <span class="hljs-hexcolor">#ff9900</span> <span class="hljs-hexcolor">#77ff66</span> <span class="hljs-hexcolor">#73C227</span> <span class="hljs-hexcolor">#C23E50</span> <span class="hljs-hexcolor">#7BAFC2</span>;</span>
+<span class="hljs-variable">$colors-list</span><span class="hljs-value">: <span class="hljs-hexcolor">#111</span> <span class="hljs-hexcolor">#222</span> <span class="hljs-hexcolor">#333</span> <span class="hljs-hexcolor">#444</span> <span class="hljs-hexcolor">#555</span>;</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">each</span> <span class="hljs-variable">$current-color</span><span class="hljs-preprocessor"> in</span> <span class="hljs-variable">$colors-list</span> {</span>
+    <span class="hljs-variable">$i</span><span class="hljs-value">: <span class="hljs-function">index</span>(<span class="hljs-variable">$colors-list</span>, <span class="hljs-variable">$current-color</span>);</span>
+    <span class="hljs-class">.stuff-</span>#{<span class="hljs-variable">$i</span>} {
+        <span class="hljs-attribute">color</span><span class="hljs-value">: <span class="hljs-variable">$current-color</span>;</span>
+        <span class="hljs-attribute">background-color</span><span class="hljs-value">: <span class="hljs-function">nth</span>(<span class="hljs-variable">$background-colors-list</span>, <span class="hljs-variable">$i</span>);</span>
+        <span class="hljs-attribute">border</span><span class="hljs-value">: <span class="hljs-number">1px</span> solid <span class="hljs-function">nth</span>(<span class="hljs-variable">$border-colors-list</span>, <span class="hljs-variable">$i</span>);</span>
+    }
+}
+</code></pre>
+<p>Guess what will happen.</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
