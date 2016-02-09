@@ -1,0 +1,160 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>October 26, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>October 26, 2015</h1></header><div class="content"><div class="diary"><h2 id="airbnb-javascript-style-guide-es5-">Airbnb Javascript Style Guide (ES5)</h2>
+<p>This note ONLY mark some points important to me -- something I didn&#39;t notice in daily work and valuable.</p>
+<p>If you want to know more, plz check the <a href="https://github.com/airbnb/javascript/tree/master/es5">original source</a>.</p>
+<p><strong>NOTE</strong> This is for ES5. I would read guide for ES6 sometime later.</p>
+<ol>
+<li><p>primitive vs. complex type</p>
+<ul>
+<li>primitive: <code>string</code>, <code>number</code>, <code>boolean</code>, <code>null</code>, <code>undefined</code></li>
+<li>complex: <strong>so called objects</strong>, you work on a <strong>reference</strong> to its value</li>
+</ul>
+</li>
+<li><strong>DONT use</strong> reserved words as keys, use readable synonyms instead.</li>
+<li><p>use <code>Array#slice</code></p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> itemsCopy = items.slice(); <span class="hljs-comment">// copy an array</span>
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">trigger</span>(<span class="hljs-params"></span>) </span>{
+ <span class="hljs-comment">// Convert an array-like object to an array</span>
+ <span class="hljs-keyword">var</span> args = <span class="hljs-built_in">Array</span>.prototype.slice.call(<span class="hljs-built_in">arguments</span>);
+}
+</code></pre>
+</li>
+<li><p>When programmatically building up a string, use <code>Array#join</code> instead of string concatenation. Mostly for IE. e.g:</p>
+<pre><code class="lang-js"><span class="hljs-keyword">var</span> items;
+<span class="hljs-keyword">var</span> i;
+<span class="hljs-keyword">var</span> messages = [
+ <span class="hljs-string">'This one worked.'</span>,
+ <span class="hljs-string">'This one worked as well.'</span>,
+ <span class="hljs-string">'This one did not work.'</span>
+];
+<span class="hljs-keyword">var</span> length = messages.length;
+
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">inbox</span>(<span class="hljs-params">messages</span>) </span>{
+ items = [];
+
+ <span class="hljs-keyword">for</span>(i = <span class="hljs-number">0</span>; i &lt; length; i++) {
+   items[i] = <span class="hljs-string">'&lt;li&gt;'</span> + messages[i] + <span class="hljs-string">'&lt;/li&gt;'</span>;
+ }
+
+ <span class="hljs-keyword">return</span> <span class="hljs-string">'&lt;ul&gt;'</span> + items.join(<span class="hljs-string">''</span>) + <span class="hljs-string">'&lt;/ul&gt;'</span>;
+}
+</code></pre>
+</li>
+<li><p><code>IIFE</code> - <code>Immediately-invoked function expression</code></p>
+<pre><code class="lang-js">(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+ <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Let\'s do something crazy.'</span>);
+})();
+</code></pre>
+</li>
+<li><p>use one <code>var</code> declaration per variable.</p>
+</li>
+<li><p>declare <strong>unassigned</strong> vars <strong>last</strong></p>
+</li>
+<li><p>about function declaration:</p>
+<ul>
+<li>Anonymous function expressions hoist the variable name, but not the function assignment</li>
+<li><p>Named function expresssions hoist the variable name, not the function name or the function body</p>
+<pre><code class="lang-js"> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">example</span>(<span class="hljs-params"></span>) </span>{
+   <span class="hljs-built_in">console</span>.log(named); <span class="hljs-comment">// =&gt; undefined</span>
+
+   named(); <span class="hljs-comment">// =&gt; TypeError named is not a function</span>
+
+   superPower(); <span class="hljs-comment">// =&gt; ReferenceError superPower is not defined</span>
+
+   <span class="hljs-keyword">var</span> named = <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">superPower</span>(<span class="hljs-params"></span>) </span>{
+     <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'Flying'</span>);
+   };
+ }
+</code></pre>
+</li>
+<li>Function declaration hoist both name &amp;&amp; function body</li>
+</ul>
+</li>
+<li><p>use <code>===</code>, <code>!==</code> over <code>==</code>, <code>!=</code></p>
+</li>
+<li>use braces with all multiple blanks<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">return</span> <span class="hljs-literal">false</span>;
+}
+</code></pre>
+</li>
+<li><p>Place single line comments on a newline above the subject of the comment.</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">getType</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-built_in">console</span>.log(<span class="hljs-string">'fetching type...'</span>);
+
+  <span class="hljs-comment">// set the default type to 'no type'</span>
+  <span class="hljs-keyword">var</span> type = <span class="hljs-keyword">this</span>._type || <span class="hljs-string">'no type'</span>;
+
+  <span class="hljs-keyword">return</span> type;
+}
+</code></pre>
+</li>
+<li><code>FIXME</code>, <code>TODO</code></li>
+<li>leave a blank line <strong>after block</strong> and before the next statement</li>
+<li><strong>DONT add trailing comma</strong> ( can cause problems with IE 6/7 and IE 9 if it&#39;s in <em>quirksmode</em> )</li>
+<li><strong>ALWAYS add semicolon.</strong> (Things are different in ES6)</li>
+<li><p>WHY putting a semicolon before file?</p>
+<pre><code class="lang-js"><span class="hljs-comment">// guards against the function becoming an argument when two files with IIFEs are concatenated</span>
+;(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>) </span>{
+  <span class="hljs-keyword">var</span> name = <span class="hljs-string">'Skywalker'</span>;
+  <span class="hljs-keyword">return</span> name;
+})();
+</code></pre>
+</li>
+<li><p>Perform type coercion at the beginning of the statement. e.g:</p>
+<pre><code class="lang-js"><span class="hljs-comment">// =&gt; this.reviewScore = 9;</span>
+<span class="hljs-comment">// bad</span>
+<span class="hljs-keyword">var</span> totalScore = <span class="hljs-keyword">this</span>.reviewScore + <span class="hljs-string">''</span>;
+
+<span class="hljs-comment">// good</span>
+<span class="hljs-keyword">var</span> totalScore = <span class="hljs-string">''</span> + <span class="hljs-keyword">this</span>.reviewScore;
+
+<span class="hljs-comment">// bad</span>
+<span class="hljs-keyword">var</span> totalScore = <span class="hljs-string">''</span> + <span class="hljs-keyword">this</span>.reviewScore + <span class="hljs-string">' total score'</span>;
+
+<span class="hljs-comment">// good</span>
+<span class="hljs-keyword">var</span> totalScore = <span class="hljs-keyword">this</span>.reviewScore + <span class="hljs-string">' total score'</span>;
+</code></pre>
+</li>
+<li><code>parseInt(value, 10)</code> - always with a radix.</li>
+<li>Naming: descriptive, camelCase</li>
+<li><code>this._firstName</code> -- private property</li>
+<li>use <code>_this</code> when saving reference for <code>this</code></li>
+<li><p>If your file exports a single class, your filename should be exactly the name of the class.</p>
+<pre><code class="lang-js"><span class="hljs-comment">// in CheckBox.js</span>
+<span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">CheckBox</span> </span>{
+
+}
+<span class="hljs-built_in">module</span>.exports = CheckBox;
+</code></pre>
+</li>
+<li><p>Assign methods to the prototype object, instead of overwriting the prototype with the new object, because:</p>
+<blockquote>
+<p>Overwriting the prototype makes inheritance impossible</p>
+</blockquote>
+</li>
+<li><p>When attaching data payloads to events, pass a <strong>hash</strong> instead of a raw value. This allows a subsequent contributor to add more data to the event payload without finding and updating every handler for the event</p>
+<pre><code class="lang-js">$(<span class="hljs-keyword">this</span>).trigger(<span class="hljs-string">'listingUpdated'</span>, { listingId : listing.id });
+
+...
+
+$(<span class="hljs-keyword">this</span>).on(<span class="hljs-string">'listingUpdated'</span>, <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params">e, data</span>) </span>{
+  <span class="hljs-comment">// do something with data.listingId</span>
+});
+</code></pre>
+</li>
+<li>Always declare <code>&#39;use strict&#39;;</code> at the top of module</li>
+<li>Prefix jQuery objects vars with <code>$</code></li>
+<li>Cache jQuery lookups</li>
+<li>Use soft tabs set to 2 spaces</li>
+</ol>
+<h2 id="reference">Reference</h2>
+<ul>
+<li><a href="https://github.com/airbnb/javascript/blob/master/es5/README.md">Original Source</a></li>
+<li><a href="https://github.com/sivan/javascript-style-guide/blob/master/es5/README.md">Chinese Version</a></li>
+</ul>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
