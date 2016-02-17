@@ -1,0 +1,72 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>February 17, 2016</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>February 17, 2016</h1></header><div class="content"><div class="diary"><h2 id="git">Git</h2>
+<p>In my PR to <a href="https://github.com/hotoo/detector">detector</a>, @hotoo suggested me to combine several commits into one, which I haven&#39;t done before.</p>
+<p>By using <code>git rebase -i</code>, one could easily do the trick.</p>
+<h3 id="-git-rebase-"><code>git rebase</code></h3>
+<p><code>Rebase</code> is a main way to integrate changes from one branch into another (the other one is <code>merge</code>). It&#39;s pretty amazing, I would suggest you to <a href="https://git-scm.com/book/en/v2/Git-Branching-Rebasing">have a look</a>.</p>
+<p>Use <code>rebase</code> would change the commit history of your repository, so always remember this rule:</p>
+<blockquote>
+<p>Do not rebase commits that exist outside your repository.</p>
+</blockquote>
+<p>Unless, you are 100% sure what you are doing - e.g: you are opening a PR and the owner ask you to combine several commits into one (just like me).</p>
+<h3 id="-git-rebase-i-"><code>git rebase -i</code></h3>
+<p>So here&#39;s the main course. <code>-i</code> means &quot;interactive&quot;, which means this option would:</p>
+<ul>
+<li>make a list of the commits which are about to be rebased</li>
+<li>let the user edit that list before rebasing</li>
+</ul>
+<p>So by using this command you could split or combine any commits you want, pretty powerful.</p>
+<p>The instructions are fully described in these two articles:</p>
+<ul>
+<li><a href="http://gitready.com/advanced/2009/02/10/squashing-commits-with-rebase.html">squashing commits with rebase</a></li>
+<li><a href="http://git.seyren.com/4_3.html">交互式 rebase</a> - Chinese version</li>
+</ul>
+<h3 id="git-svn">git-svn</h3>
+<p>I have been always using git before working in YY.Inc, then I switch to SVN since it&#39;s the version control tool accepted company-wide.</p>
+<p>But as days gone by I found our SVN system has several fallbacks:</p>
+<ol>
+<li>ONLY thunk - no branches. ( It&#39;s a long, sad story )</li>
+<li>It&#39;s impossible to rollback to last commit. The ONLY way is to <a href="http://stackoverflow.com/questions/814433/how-do-i-return-to-an-older-version-of-our-code-in-subversion">&quot;merge backwards&quot;</a>, which is really ugly.</li>
+<li>I do think two are enough.</li>
+</ol>
+<p>Since it would take sometime to switch from SVN to Git (due to some existing deploy system tied to SVN), I had to bear this until I found <code>git-svn</code>, which is a super great tool.</p>
+<p>Quote from documentation:</p>
+<blockquote>
+<p>git svn is a simple conduit for changesets between Subversion and Git. It provides a bidirectional flow of changes between a Subversion and a Git repository.</p>
+</blockquote>
+<p>The basic commands of git svn are:</p>
+<ul>
+<li><code>git svn clone</code> - clone an SVN repository into a local git repo.</li>
+<li><code>git add</code> - same as a normal git add</li>
+<li><code>git commit</code> - same as a normal git commit</li>
+<li><code>git svn dcommit</code> - push several &quot;uncommited&quot; commits to SVN server</li>
+<li><code>git svn rebase</code> - somewhat like <code>git pull</code>, but it actually pull from SVN server.</li>
+</ul>
+<p>Using git svn would be cool because you could now create as many branches as you want to develop &quot;in parallel&quot;, but pay attention to managing them:</p>
+<blockquote>
+<p>It&#39;s better to use <code>rebase</code> then <code>merge</code> to combine branches.</p>
+</blockquote>
+<p>Check more info in <a href="https://git-scm.com/book/zh/v1/Git-%E4%B8%8E%E5%85%B6%E4%BB%96%E7%B3%BB%E7%BB%9F-Git-%E4%B8%8E-Subversion">documentation</a>.</p>
+<h4 id="with-sourcetree">With SourceTree</h4>
+<p><a href="https://www.sourcetreeapp.com/">SourceTree</a> is a super-cool Git GUI client in Mac. And it supports git svn.</p>
+<p>If you met some errors when using SourceTree, you may check:</p>
+<ul>
+<li><a href="http://johnwong.github.io/mobile/2015/04/30/using-git-with-svn.html">Yosemite&#39;s solution</a></li>
+<li><a href="https://paulschreiber.com/blog/2015/11/09/fixing-git-svn-on-os-x-el-capitan/">El Capitan&#39;s solution</a></li>
+</ul>
+<h2 id="tricks-ie8">Tricks &lt;= IE8</h2>
+<p>using some keyword like <code>throw</code>, <code>class</code> as property would cause IE error in IE8. Reported in <a href="https://github.com/Reactive-Extensions/RxJS/issues/312">RxJs</a></p>
+<p>On IE 6-8 the event model is different.Event listeners are attached with the non-standard <code>element.attachEvent()</code> method. In this model, the event object has a <code>srcElement</code> property, instead of the <code>target</code> property, and it has the same semantics as <code>event.target</code>. <a href="https://developer.mozilla.org/en-US/docs/Web/API/Event/target">Ref</a></p>
+<p>So when writing event handlers. One should be like this:</p>
+<pre><code class="lang-js"><span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">hide</span>(<span class="hljs-params">e</span>) </span>{
+  <span class="hljs-comment">// Support IE6-8</span>
+  <span class="hljs-keyword">var</span> target = e.target || e.srcElement;
+  target.style.visibility = <span class="hljs-string">'hidden'</span>;
+}
+</code></pre>
+<p><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/map"><code>Array.prototype.map()</code></a> is NOT supported in IE6-8. Either using polyfill or not using it.</p>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
