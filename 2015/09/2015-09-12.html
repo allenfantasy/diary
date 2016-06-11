@@ -1,0 +1,73 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>September 12, 2015</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>September 12, 2015</h1></header><div class="content"><div class="diary"><h2 id="css">CSS</h2>
+<h3 id="viewport">Viewport</h3>
+<p>The following knowledge comes from <a href="https://dev.opera.com/articles/an-introduction-to-meta-viewport-and-viewport/">Opera&#39;s Dev Team</a></p>
+<ul>
+<li><code>width</code></li>
+<li><code>height</code></li>
+<li><code>initial-scale</code></li>
+<li><code>maximum-scale</code></li>
+<li><code>minimum-scale</code></li>
+<li><code>user-scalable</code>: when set to <code>no</code>, the user cannot zoom the page</li>
+</ul>
+<h4 id="example">Example</h4>
+<p>Device width, with zoom 2 times big:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width, initial-scale=2"</span>&gt;</span>
+</code></pre>
+<h4 id="with-media-queries">with Media Queries</h4>
+<p>You can think of media queries as conditional hooks that trigger different CSS rules to be applied if a defined set of environmental prerequisites are met.</p>
+<p>A major caveat is that if we don&#39;t set the viewport explicitly in our document, the media query will not be triggered in our mobile browser.</p>
+<p><strong>Hey man, we need an example</strong></p>
+<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (max-width: <span class="hljs-number">360px</span>) </span>{
+  <span class="hljs-tag">img</span> <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">width</span>:<span class="hljs-value"> <span class="hljs-number">96%</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#000</span></span></span>;
+  }</span>
+}
+</code></pre>
+<p>To make the above query effective, the following is required:</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width"</span>&gt;</span>
+</code></pre>
+<p>Use <code>max/min-width</code> media rather than <code>max/min-device-width</code>, thus it could handle window resize in PC as well.</p>
+<p>For more: <a href="http://mediaqueri.es/">http://mediaqueri.es/</a></p>
+<h4 id="media-query-ii-high-dpi">Media Query II: high-DPI</h4>
+<p>CSS pixel vs. device pixel</p>
+<p>CSS pixel is a relative length unit -- 1 CSS pixel can consist of multiple device pixels.</p>
+<p><code>device-pixel-ratio</code></p>
+<h3 id="misc">Misc</h3>
+<p><a href="https://blog.mozilla.org/webdev/2009/02/20/cross-browser-inline-block/">Support <code>inline-block</code> in IE 6 &amp; 7</a></p>
+<h4 id="column">Column</h4>
+<p><code>Columns</code> module serves to split up an element into multiple columns, and to give further instructions about a few details.</p>
+<p><a href="http://caniuse.com/#search=column">Browser support</a>: &gt;IE10, modern browsers(prefix needed)</p>
+<p><strong>Attributes:</strong></p>
+<ul>
+<li><a href="http://www.w3.org/TR/css3-multicol/#column-count"><code>column-count</code></a></li>
+<li><a href="http://www.w3.org/TR/css3-multicol/#column-width"><code>column-width</code></a></li>
+<li><code>column-gap</code>: gap between each column</li>
+<li><code>column-rule</code>: be drawn in the middle of the column gap with the endpoints of opposing content edges of the multicol content.</li>
+</ul>
+<h4 id="flexbox">Flexbox</h4>
+<p>The following articles are &quot;must read&quot; if you want to start booming flexbox:</p>
+<ul>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/">A complete guide to Flexbox</a></li>
+<li><a href="https://developer.mozilla.org/en-US/docs/Web/CSS/CSS_Flexible_Box_Layout/Using_CSS_flexible_boxes">Using CSS flexible boxes - MDN</a></li>
+</ul>
+<h2 id="html-a-k-a-how-to-make-love-">HTML (a.k.a How To Make Love)</h2>
+<h3 id="dom">DOM</h3>
+<p>The Document Object Model (DOM) is a <em>programming interface</em> for HTML and XML documents. It provides a representation of the document as a structured group of nodes and objects that have properties and methods, and it defines a way that the structure can be accessed from programs so that they can change the document structure, style and content.</p>
+<p>The DOM is a fully object-oriented representation of the web page, and it can be modified with a scripting language such as JavaScript.</p>
+<p>The DOM was designed to be independent of any particular programming language, making the structural representation of the document available from a single, consistent API.</p>
+<h4 id="apis">APIs</h4>
+<p>Here list some common APIs:</p>
+<ul>
+<li><code>document.getElementById()</code></li>
+<li><code>document.getElementsByTagName()</code></li>
+<li><code>document.getElementsByClassName()</code></li>
+<li><code>querySelector()</code></li>
+<li><code>querySelectorAll()</code></li>
+</ul>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
