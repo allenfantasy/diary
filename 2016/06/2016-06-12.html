@@ -1,0 +1,82 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 12, 2016</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 12, 2016</h1></header><div class="content"><div class="diary"><h2 id="css">CSS</h2>
+<p>The following are notes of Reading <a href="http://learn.shayhowe.com/advanced-html-css/responsive-web-design/">Learn to Code Advanced HTML &amp; CSS</a></p>
+<h3 id="lesson-4-responsive-web-design">Lesson 4 - Responsive Web Design</h3>
+<p>Responsive web design (a.k.a RWD), is about displaying web page content properly in different devices of different sizes</p>
+<p>The main concepts in RWD are:</p>
+<ul>
+<li>Flexible Layouts</li>
+<li>Media Queries</li>
+<li>Flexible Media</li>
+</ul>
+<p>Besides things above it&#39;s worthwhile to know <code>Viewport</code>.</p>
+<h4 id="flexible-layouts">Flexible Layouts</h4>
+<p>Define layouts properties (<code>width</code>,<code>height</code>) in relative size unit like percentage or <code>em</code>, thus the layout would maintain it&#39;s structure in different screen size.</p>
+<h4 id="media-queries">Media Queries</h4>
+<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> all and (max-width: <span class="hljs-number">1024px</span>) </span>{
+  <span class="hljs-comment">/* ... would be applied when width &lt; 1024px */</span>
+}
+</code></pre>
+<ul>
+<li>Each media query may include a media type followed by one or more expressions. Common media types include <code>all</code>,<code>screen</code>,<code>print</code>,<code>tv</code> and <code>braille</code>. <a href="https://css-tricks.com/snippets/css/all-stylesheet-media-types/">Complete list</a></li>
+<li>The default value of media type would be <code>screen</code>.</li>
+<li><code>and</code>, <code>not</code>, <code>only</code></li>
+<li>The <code>only</code> logical operator is a new operator and is not recognized by user agents using the HTML4 algorithm, thus hiding the styles from devices or browsers that don&#39;t support media queries.</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span> only screen and (orientation: portrait) </span>{
+  <span class="hljs-comment">/* ... would be applied on "portrait" screen */</span>
+}
+</code></pre>
+<ul>
+<li>media features<ul>
+<li><code>height</code>,<code>width</code>,<code>device-height</code>,<code>device-width</code> prefixed with <code>min</code>/<code>max</code></li>
+<li><code>orientation</code>. Could be <code>landscape</code>/<code>portrait</code></li>
+<li><code>aspect-ratio</code>,<code>device-ratio</code> prefixed with <code>min</code>/<code>max</code></li>
+<li><code>device-pixel-ratio</code> prefixed with <code>min</code>/<code>max</code> and vendor</li>
+<li><code>resolution</code> prefixed with <code>min</code>/<code>max</code></li>
+</ul>
+</li>
+</ul>
+<pre><code class="lang-css"><span class="hljs-at_rule">@<span class="hljs-keyword">media</span>
+  only screen and (-webkit-min-device-pixel-ratio: <span class="hljs-number">2</span>),
+  only screen and (   -moz-min-device-pixel-ratio: <span class="hljs-number">2</span>),
+  only screen and (     -o-min-device-pixel-ratio: <span class="hljs-number">2</span>/<span class="hljs-number">1</span>),
+  only screen and (        min-device-pixel-ratio: <span class="hljs-number">2</span>),
+  only screen and (                min-resolution: <span class="hljs-number">192dpi</span>),
+  only screen and (                min-resolution: <span class="hljs-number">2dppx</span>) </span>{
+    <span class="hljs-comment">/** retina styles **/</span>
+  }
+</code></pre>
+<h4 id="mobile-first">Mobile First</h4>
+<p>Mobile first means:</p>
+<blockquote>
+<p>using styles target at smaller viewports as the <strong>default styles</strong> for a website, then use media queries to add styles as the viewport grows.</p>
+</blockquote>
+<pre><code class="lang-css"><span class="hljs-comment">/* Default styles then media queries */</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">400px</span>) </span>{ <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">600px</span>) </span>{ <span class="hljs-comment">/* ... */</span> }
+<span class="hljs-at_rule">@<span class="hljs-keyword">media</span> screen and (min-width: <span class="hljs-number">1000px</span>) </span>{ <span class="hljs-comment">/* ... */</span> }
+</code></pre>
+<h4 id="viewport">Viewport</h4>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-title">meta</span> <span class="hljs-attribute">name</span>=<span class="hljs-value">"viewport"</span> <span class="hljs-attribute">content</span>=<span class="hljs-value">"width=device-width,initial-scale=1"</span>&gt;</span>
+</code></pre>
+<p>This meta tag declare 2 things:</p>
+<ul>
+<li>inform the browser that the width of page&#39;s viewport is the width of the current device</li>
+<li>inform the browser that the ratio between the device height and viewport size is 1.</li>
+<li><code>document.documentElement.clientWidth/clientHeight</code> is the viewport&#39;s width &amp; height</li>
+<li><code>document.documentElement.offsetWidth/Height</code> is the width &amp; height of <code>&lt;html&gt;</code> element. (If in IE, use <code>document.body.offsetWidth/Height</code>)</li>
+</ul>
+<p><a href="http://www.quirksmode.org/mobile/viewports.html">This article</a> <a href="http://www.quirksmode.org/mobile/viewports2.html">in quirksmode</a> explained viewport elaborately.</p>
+<p>P.S: you may read the <a href="http://weizhifeng.net/viewports.html">Chinese</a> <a href="http://weizhifeng.net/viewports2.html">version</a> if haunted by the OP.</p>
+<h3 id="reference">Reference</h3>
+<ul>
+<li><a href="https://css-tricks.com/css-media-queries/">Media query, CSS-Tricks</a></li>
+<li><a href="http://www.quirksmode.org/mobile/viewports.html">A tale of two viewports - Part I, Quirksmode</a></li>
+<li><a href="http://www.quirksmode.org/mobile/viewports2.html">A tale of two viewports - Part II, Quirksmode</a></li>
+</ul>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
