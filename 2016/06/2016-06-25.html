@@ -1,0 +1,66 @@
+<!DOCTYPE html><!--[if lte IE 8]>
+<html lang="en" class="lte-ie8">
+<![endif]-->
+<!--[if gt IE 8]><!-->
+<html lang="en">
+<!--<![endif]--><head><meta charset="utf-8"><title>June 25, 2016</title><meta name="viewport" content="width=device-width, initial-scale=1.0"><link rel="stylesheet" href="/diary/styles/global.css"><link rel="stylesheet" href="/diary/styles/tomorrow.css"><link rel="stylesheet" href="/diary/styles/diary.css"></head><body><header class="header"><div class="index"><a href="/diary/">Index</a></div><h1>June 25, 2016</h1></header><div class="content"><div class="diary"><h2 id="css">CSS</h2>
+<p>The following are notes of reading <a href="http://learn.shayhowe.com/advanced-html-css/transitions-animations/">Learn to Code Advanced HTML &amp; CSS</a></p>
+<h3 id="lesson-8-transitions-and-animations">Lesson 8: Transitions and Animations</h3>
+<h4 id="transition">Transition</h4>
+<ul>
+<li><code>transition-property</code>, <code>transition-duration</code>, <code>transition-timing-function</code>, <code>transition-delay</code></li>
+<li>use vendor prefix to have maximum browser support</li>
+<li>not all properties may be transitioned, only properties that have an identifiable halfway point</li>
+<li>shorthand style: <code>[property] [duration] [timing-function] [delay]</code></li>
+</ul>
+<p>Example</p>
+<pre><code class="lang-css"><span class="hljs-class">.box</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#2db34a</span></span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">6px</span>
+  transition-property: background, border-radius</span></span>; <span class="hljs-comment">/* Mutiple properties */</span>
+  <span class="hljs-rule"><span class="hljs-attribute">transition-duration</span>:<span class="hljs-value"> .<span class="hljs-number">2s</span>, <span class="hljs-number">1s</span></span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">transition-timing-function</span>:<span class="hljs-value"> linear, ease-in</span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">transition-delay</span>:<span class="hljs-value"> <span class="hljs-number">0s</span>, <span class="hljs-number">1s</span></span></span>;
+}</span>
+<span class="hljs-class">.box</span><span class="hljs-pseudo">:hover</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">background</span>:<span class="hljs-value"> <span class="hljs-hexcolor">#ff7b29</span></span></span>;
+  <span class="hljs-rule"><span class="hljs-attribute">border-radius</span>:<span class="hljs-value"> <span class="hljs-number">50%</span></span></span>;
+}</span>
+</code></pre>
+<h4 id="animations">Animations</h4>
+<ul>
+<li>keyframes (may also need vendor prefix)<ul>
+<li>animation breakpoints</li>
+<li>animation name</li>
+</ul>
+</li>
+<li><code>animation-name</code>, <code>animation-duration</code>, <code>animation-timing-function</code>, <code>animation-delay</code></li>
+<li>shorthand style</li>
+<li><code>animation-iteration-count</code> - number or <code>infinite</code></li>
+<li><code>animation-direction: normal/reverse/alternate/alternate-reverse</code></li>
+<li><code>animation-play-state: running/paused</code></li>
+<li><code>animation-fill-mode</code> ????</li>
+</ul>
+<p>Example</p>
+<pre><code class="lang-css"><span class="hljs-comment">/* Declare a keyframe */</span>
+<span class="hljs-at_rule">@<span class="hljs-keyword">keyframes</span> slide </span>{
+  0% <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">left</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
+  }</span>
+  50% <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">left</span>:<span class="hljs-value"> <span class="hljs-number">244px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"> <span class="hljs-number">100px</span></span></span>;
+  }</span>
+  100% <span class="hljs-rules">{
+    <span class="hljs-rule"><span class="hljs-attribute">left</span>:<span class="hljs-value"> <span class="hljs-number">488px</span></span></span>;
+    <span class="hljs-rule"><span class="hljs-attribute">top</span>:<span class="hljs-value"> <span class="hljs-number">0</span></span></span>;
+  }</span>
+}
+
+<span class="hljs-comment">/* Use the "slide" keyframe as animation, shorthand style */</span>
+<span class="hljs-class">.stage</span><span class="hljs-pseudo">:hover</span> <span class="hljs-class">.ball</span> <span class="hljs-rules">{
+  <span class="hljs-rule"><span class="hljs-attribute">animation</span>:<span class="hljs-value"> slide <span class="hljs-number">2s</span> linear</span></span>;
+}</span>
+</code></pre>
+</div></div><footer class="footer"><address class="author">Copyright &copy;<a rel="author" href="https://github.com/allenfantasy" class="author-name">Allen Wu</a>-<a href="https://github.com/allenfantasy/my-tech-diary" class="source-repo">Source</a></address><p>Generated by<a href="https://github.com/joyeecheung/diary" class="site-repo">Joyee Cheung&#39;s diary generator</a></p></footer></body></html>
